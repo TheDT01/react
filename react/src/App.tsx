@@ -1,9 +1,9 @@
-import Massage from './Message'; // Check the correct path and filename
+import ListGroup from "./components/ListGroup";
 
 function App() {
   return (
     <div>
-      <Massage />
+      <ListGroup />
     </div>
   );
 }
