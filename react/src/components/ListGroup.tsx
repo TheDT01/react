@@ -1,5 +1,5 @@
 function ListGroup() {
-    const item = [
+    let item = [
         "New York",
         "Los Angeles",
         "Chicago",
@@ -8,9 +8,18 @@ function ListGroup() {
         "Phoenix",
     ];
 
+    item = [];
+
+
+
+    const getMessage = () => {
+        return item.length === 0 ? <p>No item found</p> : null;
+    }
+
     return (
         <>
             <h1>tor bap</h1>
+            {getMessage()}
             <ul className="list-group">
                 {item.map((item) => (
                     <li key={item}>{item}</li>
