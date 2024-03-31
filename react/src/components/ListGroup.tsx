@@ -1,28 +1,37 @@
-function ListGroup() {
-    let item = [
-        "New York",
-        "Los Angeles",
-        "Chicago",
-        "Houston",
-        "Philadelphia",
-        "Phoenix",
-    ];
-
-    item = [];
+// {item: [], heading: string}
+interface Props {
+    item: string[];
+    heading: string;
+}
 
 
+import { useState } from "react";
 
-    const getMessage = () => {
-        return item.length === 0 ? <p>No item found</p> : null;
-    }
+
+function ListGroup({ item, heading }: Props) {
+
+
+    // Hook
+    const [selectedIndex, setSelectedIndex] = useState(-1);
+
 
     return (
         <>
-            <h1>tor bap</h1>
-            {getMessage()}
+            <h1>{heading}</h1>
+            {item.length === 0 && <p>no item found</p>}
             <ul className="list-group">
-                {item.map((item) => (
-                    <li key={item}>{item}</li>
+                {item.map((item, index) => (
+                    <li
+                        className={
+                            selectedIndex === index
+                                ? "list-group-item active"
+                                : "list-group-item"
+                        }
+                        key={item}
+                        onClick={() => { setSelectedIndex(index); }}
+                    >
+                        {item}
+                    </li>
                 ))}
             </ul>
         </>
